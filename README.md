@@ -1,6 +1,6 @@
-# World-Happiness-Analysis-2022
+# World Happiness Analysis
 
-Analyzed which factor is mostly affecting the worldwide nations' happiness on 2022. 
+Analyzed which factor is mostly affecting the worldwide nations' happiness from 2015 to 2022. 
 
 Created graphs of Top 20 nations on each perspectives (e.g., GDP per capita, Healthy Life Expectancy, etc.).
 

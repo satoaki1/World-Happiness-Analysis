@@ -18,7 +18,7 @@ options(
 # Read data
 # When you read data from certain file, kindly find "absolute path" of the file and input into file="".
 happy2021 <- read.csv(
-  file = "file:///Users/ihsa332019/works/RProjects/WorldHappinessAnalysis/input/2021.csv",
+  file = "input/2021.csv",
   header = TRUE
 )
 

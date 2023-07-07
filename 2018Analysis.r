@@ -22,6 +22,42 @@ happy2018 <- read.csv(
   header = TRUE
 )
 
+# Exclude non-numeric columns
+numeric_cols2018 <- setdiff(colnames(happy2018), c("Country.or.region", "Overall.rank"))
+
+# Create a new data frame with only the numeric columns
+numeric_data2018 <- happy2018[, numeric_cols2018]
+
+# Set larger plotting margins
+par(mar = c(5, 5, 2, 2))
+
+# Plot boxplot for each numeric column
+boxplot(numeric_data2018, las = 2)
+
+# Calculate the mean, median, mode, and variance values for each numeric column
+mean_values <- sapply(happy2018[, numeric_cols], mean)
+median_values <- sapply(happy2018[, numeric_cols], median)
+mode_values <- sapply(happy2018[, numeric_cols], mode)
+variance_values <- sapply(happy2018[, numeric_cols], var)
+
+# Combine column names and mean, median, mode, and variance values into a data frame
+mean_result <- data.frame(Column = numeric_cols, mean_value = mean_values)
+median_result <- data.frame(Column = numeric_cols, median_value = median_values)
+mode_result <- data.frame(Column = numeric_cols, mode_value = mode_values)
+variance_result <- data.frame(Column = numeric_cols, variance_value = variance_values)
+
+# Print the result
+print(mean_result)
+print(median_result)
+print(mode_result)
+print(variance_result)
+
+# Generate box plots with analyzable data
+boxplot(happy2018[, numeric_cols], 
+        main = "Box Plots of Numeric Columns",
+        xlab = "Factors",
+        ylab = "Values")
+
 head(happy2018)
 summary(happy2018)
 

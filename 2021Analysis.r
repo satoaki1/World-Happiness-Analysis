@@ -22,6 +22,33 @@ happy2021 <- read.csv(
   header = TRUE
 )
 
+# Exclude non-numeric columns
+numeric_cols <- setdiff(colnames(happy2021), c("Country.name", "Regional.indicator"))
+
+# Calculate the mean, median, mode, and variance values for each numeric column
+mean_values <- sapply(happy2021[, numeric_cols], mean)
+median_values <- sapply(happy2021[, numeric_cols], median)
+mode_values <- sapply(happy2021[, numeric_cols], mode)
+variance_values <- sapply(happy2021[, numeric_cols], var)
+
+# Combine column names and mean, median, mode, and variance values into a data frame
+mean_result <- data.frame(Column = numeric_cols, mean_value = mean_values)
+median_result <- data.frame(Column = numeric_cols, median_value = median_values)
+mode_result <- data.frame(Column = numeric_cols, mode_value = mode_values)
+variance_result <- data.frame(Column = numeric_cols, variance_value = variance_values)
+
+# Generate box plots with analyzable data
+boxplot(happy2020[, numeric_cols], 
+        main = "Box Plots of Numeric Columns",
+        xlab = "Factors",
+        ylab = "Values")
+
+# Print the result
+print(mean_result)
+print(median_result)
+print(mode_result)
+print(variance_result)
+
 head(happy2021)
 summary(happy2021)
 

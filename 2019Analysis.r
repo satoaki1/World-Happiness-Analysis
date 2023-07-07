@@ -22,6 +22,36 @@ happy2019 <- read.csv(
   header = TRUE
 )
 
+# Exclude non-numeric columns
+numeric_cols2019 <- setdiff(colnames(happy2019), c("Country.or.region", "Overall.rank"))
+
+# Create a new data frame with only the numeric columns
+numeric_data2019 <- happy2019[, numeric_cols2019]
+
+# Set larger plotting margins
+par(mar = c(5, 5, 2, 2))
+
+# Plot boxplot for each numeric column
+boxplot(numeric_data2019, las = 2)
+
+# Calculate the mean, median, mode, and variance values for each numeric column
+mean_values <- sapply(happy2019[, numeric_cols], mean)
+median_values <- sapply(happy2019[, numeric_cols], median)
+mode_values <- sapply(happy2019[, numeric_cols], mode)
+variance_values <- sapply(happy2019[, numeric_cols], var)
+
+# Combine column names and mean, median, mode, and variance values into a data frame
+mean_result <- data.frame(Column = numeric_cols, mean_value = mean_values)
+median_result <- data.frame(Column = numeric_cols, median_value = median_values)
+mode_result <- data.frame(Column = numeric_cols, mode_value = mode_values)
+variance_result <- data.frame(Column = numeric_cols, variance_value = variance_values)
+
+# Print the result
+print(mean_result)
+print(median_result)
+print(mode_result)
+print(variance_result)
+
 head(happy2019)
 summary(happy2019)
 

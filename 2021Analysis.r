@@ -38,7 +38,7 @@ mode_result <- data.frame(Column = numeric_cols, mode_value = mode_values)
 variance_result <- data.frame(Column = numeric_cols, variance_value = variance_values)
 
 # Generate box plots with analyzable data
-boxplot(happy2020[, numeric_cols], 
+boxplot(happy2021[, numeric_cols], 
         main = "Box Plots of Numeric Columns",
         xlab = "Factors",
         ylab = "Values")
